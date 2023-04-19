@@ -1,2 +1,2 @@
 # tabelog_handling
-tabelog
+Python scraping for [tabelog](https://tabelog.com/).
