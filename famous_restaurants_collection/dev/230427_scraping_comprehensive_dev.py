@@ -80,3 +80,12 @@ print(dt_now.isoformat())
 """
 2023-04-27T23:48:33.457759
 """
+
+#%%
+import sys
+sys.path.append('C:/github/tabelog_handling/')
+
+from famous_restaurants_collection import basic_info_collection as bic
+
+dat = bic.BasicInfoCollection(url='https://award.tabelog.com/hyakumeiten/italian_tokyo?pref=tokyo')
+dat.collect()
