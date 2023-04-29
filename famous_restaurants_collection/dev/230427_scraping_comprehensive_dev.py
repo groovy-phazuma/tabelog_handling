@@ -89,3 +89,7 @@ from famous_restaurants_collection import basic_info_collection as bic
 
 dat = bic.BasicInfoCollection(url='https://award.tabelog.com/hyakumeiten/italian_tokyo?pref=tokyo')
 dat.collect()
+
+#%%
+res_df = dat.res_df
+res_df.to_csv('C:/github/tabelog_handling/famous_restaurants_collection/results/2022_Tokyo_italian_top_100.csv',index=False,encoding='utf_8_sig')
