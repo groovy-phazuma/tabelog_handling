@@ -31,7 +31,7 @@ class BasicInfoCollection():
 
         # collect each store data
         #t = driver.find_elements_by_xpath("//a[contains(@href,'tabelog.com/tokyo/')]")
-        t = driver.find_elements_by_xpath("//a[contains(@href,'tabelog.com/')]")
+        t = driver.find_elements_by_xpath("//a[contains(@href,'https://tabelog.com/')]")
 
         N = []
         A = []
@@ -43,15 +43,15 @@ class BasicInfoCollection():
         for i in tqdm(range(len(t))):
             try:
                 target = t[i].get_attribute("href")
-                U.append(target)
                 name,area,score,dinner_price,lunch_price = search(target)
                 N.append(name)
                 A.append(area)
                 S.append(score)
                 DP.append(dinner_price)
                 LP.append(lunch_price)
+                U.append(target)
             except:
-                pass
+                print('Error : ',target)
         
         # summarize
         res_df = pd.DataFrame({'店舗名':N,'最寄り':A,'評価':S,'ランチ':LP,'ディナー':DP,'URL':U})

@@ -22,7 +22,8 @@ pprint.pprint(cwide_url)
 
 #%%
 for url in cwide_url:
-    genre = print(url.split('/')[-1])
+    genre = url.split('/')[-1]
+    print(genre)
     dat = bic.BasicInfoCollection(url=url)
     dat.collect()
     res_df = dat.res_df
