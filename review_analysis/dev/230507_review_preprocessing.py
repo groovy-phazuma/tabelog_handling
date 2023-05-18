@@ -42,3 +42,11 @@ target_list = ["all","dinner","lunch"]
 lunch_review = driver.find_elements_by_class_name('rvwsort-change__tab')
 lunch_review[target_list.index(target)].click()
 time.sleep(3)
+
+#%%
+tmp = driver.find_elements_by_class_name("rvw-item__review-contents-wrap")[0].text
+print(tmp)
+
+#%%
+with open('C:/github/tabelog_handling/review_analysis/dev/result/review.txt', mode = "w", encoding="utf_8") as f:
+    f.write(tmp)

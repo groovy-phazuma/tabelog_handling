@@ -1,0 +1,4 @@
+〇 WordCloudを日本語に対応させる
+1. 形態素解析のためのMeCabのインストール (https://github.com/ikegami-yukino/mecab/releases)
+2.  Python環境へのMeCabのインストール (pip install MeCab)
+3. デフォルトのWordCloundでは文字化けする。フォントのパスを設定する。
