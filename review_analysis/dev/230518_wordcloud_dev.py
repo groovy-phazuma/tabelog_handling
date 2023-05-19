@@ -7,6 +7,7 @@ WordCloud test
 @author: I.Azuma
 """
 #%%
+import itertools
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
@@ -18,9 +19,14 @@ wordcloud = WordCloud().generate(text)
 plt.imshow(wordcloud)
 
 #%%
-review = open("C:/github/tabelog_handling/review_analysis/dev/result/review.txt",encoding='utf-8').read()
+review2 = open("C:/github/tabelog_handling/review_analysis/dev/result/review.txt",encoding='utf-8').read()
+txt = open("C:/github/tabelog_handling/review_analysis/dev/result/review.txt",encoding='utf-8').read().splitlines()[5:-10]
+review = ""
+for r in txt:
+    review = review + " " + str(r)
 print(review)
 
+#%%
 import MeCab
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -30,9 +36,11 @@ node = tagger.parseToNode(review)
 # 名詞のみ取り出す
 word_list = []
 while node:
-    word_type = node.feature.split(',')[0]
-    if word_type in ["名詞"]:
-        word_list.append(node.surface)
+    word_type = node.feature.split(',')
+    if word_type[0] in ["名詞"]:
+        # さらに絞り込み
+        if word_type[1] in ["一般", "固有名詞"]:
+            word_list.append(node.surface)
     node = node.next
 # word_listを文字列に変換する
 word_chain = ' '.join(word_list)
