@@ -19,7 +19,6 @@ wordcloud = WordCloud().generate(text)
 plt.imshow(wordcloud)
 
 #%%
-review2 = open("C:/github/tabelog_handling/review_analysis/dev/result/review.txt",encoding='utf-8').read()
 txt = open("C:/github/tabelog_handling/review_analysis/dev/result/review.txt",encoding='utf-8').read().splitlines()[5:-10]
 review = ""
 for r in txt:

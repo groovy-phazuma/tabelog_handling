@@ -39,7 +39,12 @@ class GetReview():
         info[3].click() # select review
         time.sleep(5)
 
-    def get_review(self):
+    def get_review(self,target = "lunch"):
+        target_list = ["all","dinner","lunch"]
+        # choose review range
+        lunch_review = self.driver.find_elements_by_class_name('rvwsort-change__tab')
+        lunch_review[target_list.index(target)].click()
+        time.sleep(3)
         # expand the review range
         tmp = self.driver.find_elements_by_id('reload_list_change')[0]
         select = Select(tmp) # select/option tag
@@ -52,7 +57,7 @@ class GetReview():
         # collect info
         self.review = self.driver.find_elements_by_class_name("rvw-item__review-contents-wrap")[0].text
     
-    def save_review(self):
-        with open('C:/github/tabelog_handling/review_analysis/dev/result/review.txt', mode = "w", encoding="utf_8") as f:
+    def save_review(self,path='C:/github/tabelog_handling/review_analysis/dev/result/review2.txt'):
+        with open(path, mode = "w", encoding="utf_8") as f:
             f.write(self.review)
 
